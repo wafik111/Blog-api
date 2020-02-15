@@ -12,13 +12,10 @@ class Api::V1::PostsController < ApplicationController
     end
 
     def create
-        @post = Post.new(posts_params)
-        @post.user_id = current_user.id
-        if @post.save
+        # byebug
+        @post = Post.create!(posts_params)
         render json: { message: "post created! ", data: @post}, status: 201
-        else
-            render json: { error: @post.errors.full_messages}, status: 405
-        end
+       
     end
 
     def update
@@ -47,9 +44,9 @@ class Api::V1::PostsController < ApplicationController
     private
 
     def posts_params
-        params.require(:post).permit(:title, :body)
+        params.permit(:title, :body, :user_id, tags_attributes: [:tag])
     end
-
+   
     def set_post
         @post = Post.find(params[:id])
     end
