@@ -12,7 +12,6 @@ class Api::V1::PostsController < ApplicationController
     end
 
     def create
-        # byebug
         @post = Post.create!(posts_params)
         render json: { message: "post created! ", data: @post}, status: 201
        
