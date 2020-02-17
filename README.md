@@ -22,11 +22,30 @@ Things you may want to cover:
 - Deployment instructions
 
 - ...
-- APIS
-  POST /auth
-  ------- POSTS --------
-  GET /api/v1/posts
-  POST /api/v1/posts
-  GET /api/v1/posts/:id
-  PUT /api/v1/posts/:id
-  DELETE /api/v1/posts/:id
+
+# Blog instruction
+
+- You will need Docker and Docker compose installed on your machine.
+- use Docker compose up to run the project
+- when ypu run docker compose the app will wait for mysql service to start first as docker compose attr depends: isn't enouph to make the app wait for the database.
+
+# Notes
+
+- the authentication was made with a gem 'Devise auth token' it is like Devise but with JWT .
+- occasionally an issue happened with redis that refused connect i didn't figure out why yet . so Kindly test it locally using 'rails s'.
+
+# APIS
+
+- ------- AUTH ---------
+- POST /auth ===== this Api wil create a User
+- POST /auth/sign_in ==== this will return in the header {access-token: '', client: '', uid: ''} send them in the header of every new request
+- ------- POSTS --------
+- GET /api/v1/posts
+- POST /api/v1/posts , takes : {title:'', body: '', user_id: '', tags: [{tag: ''}]}
+- GET /api/v1/posts/:id
+- PUT /api/v1/posts/:id, takes : {title:'', body: '', user_id: '', tags: [{tag: ''}]}
+- DELETE /api/v1/posts/:id
+- ------ Comments -------
+- POST /api/v1/posts/:post_id/comments , takes : {content:'',user_id: '',]}
+- PUT /api/v1/posts/:post_id/comments/:id , takes : takes : {content:'',user_id: '',]}
+- DELETE /api/v1/posts/:post_id/comments/:id
