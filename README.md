@@ -45,3 +45,7 @@ Things you may want to cover:
 - GET /api/v1/posts/:id
 - PUT /api/v1/posts/:id, takes : {title:'', body: '', user_id: '', tags: [{tag: ''}]}
 - DELETE /api/v1/posts/:id
+- ------ Comments -------
+- POST /api/v1/posts/:post_id/comments , takes : {content:'',user_id: '',]}
+- PUT /api/v1/posts/:post_id/comments/:id , takes : takes : {content:'',user_id: '',]}
+- DELETE /api/v1/posts/:post_id/comments/:id
