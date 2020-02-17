@@ -32,7 +32,7 @@ Things you may want to cover:
 # Notes
 
 - the authentication was made with a gem 'Devise auth token' it is like Devise but with JWT .
-- occasionally an issue happened with redis that refused connect i didn't figure out why .
+- occasionally an issue happened with redis that refused connect i didn't figure out why yet . so Kindly test it locally using 'rails s'.
 
 # APIS
 
