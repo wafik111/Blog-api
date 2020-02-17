@@ -27,6 +27,7 @@ Things you may want to cover:
 
 - You will need Docker and Docker compose installed on your machine.
 - use Docker compose up to run the project
+- when ypu run docker compose the app will wait for mysql service to start first as docker compose attr depends: isn't enouph to make the app wait for the database.
 
 # Notes
 
