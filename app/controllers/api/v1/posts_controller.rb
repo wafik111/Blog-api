@@ -18,7 +18,6 @@ class Api::V1::PostsController < ApplicationController
     end
 
     def update
-        # @post = Post.find(params[:id])
         if @post.user_id == current_user.id
             if @post.update(posts_params)
                 render json: { message: "post edited! ", data: @post}, status: 200
@@ -31,7 +30,6 @@ class Api::V1::PostsController < ApplicationController
     end
 
     def destroy
-        # @post = Post.find(params[:id])
         if @post.user_id == current_user.id
             @post.destroy
             render json: { message: 'post Deleted'},status: 200
