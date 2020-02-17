@@ -25,6 +25,7 @@ Things you may want to cover:
 
 # Blog instruction
 
+- You will need Docker and Docker compose installed on your machine.
 - use Docker compose up to run the project
 
 # Notes
@@ -36,7 +37,7 @@ Things you may want to cover:
 
 - ------- AUTH ---------
 - POST /auth ===== this Api wil create a User
-- POST /auth/sign_in ==== this will return in the header {access-token: '', client: '', uid: ''} send them in the header
+- POST /auth/sign_in ==== this will return in the header {access-token: '', client: '', uid: ''} send them in the header of every new request
 - ------- POSTS --------
 - GET /api/v1/posts
 - POST /api/v1/posts , takes : {title:'', body: '', user_id: '', tags: [{tag: ''}]}
