@@ -23,4 +23,10 @@ Things you may want to cover:
 
 - ...
 - APIS
-  \*/auth ====== register path
+  POST /auth
+  ------- POSTS --------
+  GET /api/v1/posts
+  POST /api/v1/posts
+  GET /api/v1/posts/:id
+  PUT /api/v1/posts/:id
+  DELETE /api/v1/posts/:id

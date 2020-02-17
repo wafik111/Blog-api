@@ -12,10 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20200215195854) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "comments", force: :cascade do |t|
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "content"
     t.bigint "post_id"
     t.bigint "user_id"
@@ -25,7 +22,7 @@ ActiveRecord::Schema.define(version: 20200215195854) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "posts", force: :cascade do |t|
+  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.text "body"
     t.bigint "user_id"
@@ -34,7 +31,7 @@ ActiveRecord::Schema.define(version: 20200215195854) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "tags", force: :cascade do |t|
+  create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "tag"
     t.bigint "post_id"
     t.datetime "created_at", null: false
@@ -42,7 +39,7 @@ ActiveRecord::Schema.define(version: 20200215195854) do
     t.index ["post_id"], name: "index_tags_on_post_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
     t.string "encrypted_password", default: "", null: false

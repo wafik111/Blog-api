@@ -1,0 +1,47 @@
+version: "3.7"
+services:
+  db:
+    image: "mysql:8"
+    hostname: db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+
+  redis:
+    image: "redis:4.0-alpine"
+    command: redis-server
+    volumes:
+      - "redis:/data"
+
+  website:
+    depends_on:
+      - "db"
+      - "redis"
+    build: .
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: db
+      DB_USERNAME: root
+      DB_PASSWORD: root
+      DB_DATABASE: sample
+      DB_PORT: 3306
+      RAILS_ENV: development
+      RAILS_MAX_THREADS: 5
+
+  sidekiq:
+    depends_on:
+      - "db"
+      - "redis"
+    build: .
+    command: sidekiq -C config/sidekiq.yml
+    volumes:
+      - ".:/app"
+    environment:
+      REDIS_URL: redis://redis:6379/0
+
+volumes:
+  redis:
+  db:
